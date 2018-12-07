@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/world.js"></script>
+    <script src="js/geoCityCountyData.js"></script>
+</head>
+<body>
+<div class="wrapper pos">
+    <div>
+        <img<!-- src="img/nav1.png" alt=""--> id="nav1">
+        <img <!--src="img/nav2.png" alt="" id="nav2" -->style="display:none;">
+    </div>
+    <div class="zix-2">
+        <div class="nav-lt">
+            <div class="hit-num" >
+                <p>1小时攻击数<span id="attackNum1">22222</span></p>
+                <h5></h5>
+                <p>24小时攻击数<b  id="attackNum24">222222</b></p>
+            </div>
+            <div class="hit-ana" >
+                <h3>攻击数量分析</h3>
+                <div class="hit-img">
+                   <!-- <img src="img/BAR.png" alt="" id="bar-click">-->
+                   <!-- <img src="img/LINE.png" alt="" id="line-click">-->
+                </div>
+                <div class="bar" id="bar1"></div>
+                <div class="bar" id="line1" style="display: none;"></div>
+                <!--<ul>
+                    <li><b></b><span>攻击类型1</span></li>
+                    <li><b></b><span>攻击类型2</span></li>
+                    <li><b></b><span>攻击类型3</span></li>
+                    <li><b></b><span>攻击类型4</span></li>
+                    <li><b></b><span>攻击类型5</span></li>
+                    <li><b></b><span>攻击类型6</span></li>
+                </ul>-->
+            </div>
+        </div>
+        <div class="nav-rt">
+            <div class="rt-top">
+                <div class="rt-top-lt">
+                    <ul>
+                        <li><p>当前在线终端数: <span>21</span></p></li>
+                        <li><p>当前在线终端数: <span>21</span></p></li>
+                        <li><p>当前在线终端数: <span>21</span></p></li>
+                        <li><p>当前在线终端数: <span>21</span></p></li>
+                    </ul>
+                </div>
+                <div class="rt-top-rt">
+                    <h3>变换频率</h3>
+                    <p>60<span>s</span></p>
+                </div>
+            </div>
+            <div class="rt-mid" id="bar2"></div>
+            <div class="rt-btm" id="pie2"></div>
+        </div>
+        <div class="table-btm">
+            <div class="table-lt">
+                <h3>蜜罐实时数据</h3>
+                <table  id="table1"class="table table-striped ">
+                    <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>源端</th>
+                        <th>目的端</th>
+                        <th>服务类型</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tb1">
+                  <!--  <tr>
+                        <td>2018.11.12  02:33:22</td>
+                        <td>10.10.1.2</td>
+                        <td>10.10.1.5</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>2018.11.12  18:30:32</td>
+                        <td>10.10.1.3</td>
+                        <td>10.10.1.6</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>2018.11.12  06:45:30</td>
+                        <td>10.10.1.4</td>
+                        <td>10.10.1.7</td>
+                        <td>100</td>
+                    </tr>-->
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-rt">
+                <h3>流表实时数据</h3>
+                <table id="table2" class="table table-striped " style="table-layout: fixed">
+                    <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>真实MAC</th>
+                        <th>真实IP</th>
+                        <th>虚拟MAC</th>
+                        <th>虚拟IP</th>
+                    </tr>
+                    </thead>
+                    <tbody  id="tb2">
+                   <!-- <tr>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                    </tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="zix-3" style="display:none;">
+        <div class="lt-num">
+            <ul>
+                <li><p>1h</p><span>22222</span></li>
+                <li><p>24h</p><span>22222</span></li>
+            </ul>
+        </div>
+        <div class="rt-num">
+            <ul>
+                <li><p class="i-img i-img1"></p><span>22222</span></li>
+                <li><p class="i-img i-img2"></p><span>22222</span></li>
+                <li><p class="i-img i-img3"></p><span>22222</span></li>
+                <li><p class="i-img i-img4"></p><span>22222</span></li>
+                <li><p class="i-img i-img5"></p><span>60<i>s</i></span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="header">
+            <img src="img/header.png" alt="">
+            <p>拟态模拟XX展示系统</p>
+        </div>
+        <div class="world-map" id="world-map">
+
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var colorArr = ['#ffb400','#c000ff','#00ffd8','#fcff00','#00ff00','#ff1a55'];
+    $(function () {
+        $('#nav1').click(function () {
+            $('.zix-2').hide();
+            $(this).hide();
+            $('#nav2').show();
+            $('.zix-3').show();
+        });
+        $('#nav2').click(function () {
+            $('.zix-2').show();
+            $(this).hide();
+            $('#nav1').show();
+            $('.zix-3').hide();
+        });
+
+        // 遍历b元素 并赋值颜色
+        $('.hit-ana ul li').find('b').map(function (i) {
+            $(this).attr('style','border-color:' + colorArr[i]);
+        });
+        $('#line-click').click(function () {
+            $('#bar1').hide();
+            $('#line1').show();
+        })
+        $('#bar-click').click(function () {
+            $('#bar1').show();
+            $('#line1').hide();
+        })
+        //获取点击的颜色  用于更改echarts图颜色
+        $('.hit-ana ul li').on('click',function () {
+            var color = $(this).find('b').css('border-color');
+            bar1(data,color);
+            line1(data,color);
+        })
+        // setInterval(getdata, 1000);
+    });
+
+    var data = [100,200,300,400,500,600,700];  //获取的攻击类型的值
+    // var timeData = ['10.24', '10.25', '10.26', '10.27', '10.28', '10.29', '10.21'];
+    var color = '#ffb400';
+    var char_bar;
+    function bar1(dataX,dataY,color) {
+        var dataArr = data;
+        var color = color;
+        char_bar = echarts.init(document.getElementById('bar1'));
+        option_bar = {
+            grid: {
+                left: '3%',
+                right: '3%',
+                bottom: '3%',
+                containLabel: true,
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: 'false',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#FFFFFF',
+                    }
+                },
+                axisLabel:{
+                    interval: 0,
+                    textStyle: {
+                        fontSize: 12,
+                        color: '#FFFFFF'
+                    }
+                },
+                data: dataX
+            },
+            yAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#fff',
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        fontSize: 14,
+                        color: '#ffffff'
+                    }
+                },
+                splitLine: {
+                    show: false
+                }
+            },
+            color: color,
+            series: [{
+                data: dataY,
+                type: 'bar',
+                barWidth: 10
+            }]
+        }
+        char_bar.setOption(option_bar);
+    }
+    //初始化攻击数量分析数据
+    getData(color);
+    var dataX,dataY;
+    //初始化攻击数量分析数据
+    function getData(color) {
+        $.ajax({
+            type: "get", async: true, //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url: "http://127.0.0.1/bigScreen/getAttackTypeNum",
+            data: {startTime:""}, dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                dataX=data.result.xList;
+                dataY=data.result.yList;
+                bar1(dataX,dataY,color); //调用
+                //开启定时器
+                setInterval(getdata, 2000);
+            }
+        })
+    }
+    function getdata(){
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "http://127.0.0.1/bigScreen/getAttackTypeNum",
+            data: {startTime:"1"}, //1-定时器请求
+            dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var  x=data.result.xData;
+                var y=data.result.yData;
+                dataX.shift();
+                dataX.push(x);
+                dataY.shift();
+                dataY.push(y);
+                //更新数据
+                var option = char_bar.getOption();
+                option.series[0].data = dataY;
+                option.xAxis[0].data = dataX;
+                char_bar.setOption(option);
+            }
+        })
+
+        console.log("定时器----》》"+Math.round(Math.random() * 10))
+
+    }
+//1小时攻击数量===============
+    //攻击数量
+    getAttackNum1();
+    //1小时
+    function getAttackNum1() {
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "http://127.0.0.1/bigScreen/getAttackNum",
+            data: {flag:""}, dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var attackNum=data.result.attackNum;
+                $("#attackNum1").html("").html(attackNum+"");
+                //开启定时器
+                setInterval(getAttackNum1ByInterval, 2000);
+            }
+        })
+    }
+    //1小时定时器
+    function getAttackNum1ByInterval(){
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "http://127.0.0.1/bigScreen/getAttackNum",
+            data: {flag:""}, //1-定时器请求
+            dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                console.log("1小时定时器----》》")
+                var attackNum=data.result.attackNum;
+                $("#attackNum1").html("").html(attackNum+"");
+            }
+        })
+
+
+
+    }
+    //24小时攻击数量===============
+    getAttackNum24();
+    //24小时
+    function getAttackNum24() {
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "http://127.0.0.1/bigScreen/getAttackNum",
+            data: {flag:"24"}, dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var attackNum=data.result.attackNum;
+                $("#attackNum24").html("").html(attackNum+"");
+                //开启定时器
+                setInterval(getAttackNum24ByInterval, 2000);
+            }
+        })
+    }
+    //24小时定时器
+    function getAttackNum24ByInterval(){
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "http://127.0.0.1/bigScreen/getAttackNum",
+            data: {flag:"24"}, //1-定时器请求
+            dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                console.log("1小时定时器----》》")
+                var attackNum=data.result.attackNum;
+                $("#attackNum24").html("").html(attackNum+"");
+            }
+        })
+
+
+
+    }
+    //24小时攻击数量===============
+
+    //表格
+    //     tableInterval();
+        //先在table的最后增加一行，然后再把第一行中的数据填充到新增加的行中，最后再删除table的第一行
+        function change(table,tableDataList){
+            var row = table.insertRow(table.rows.length);//在table的最后增加一行,table.rows.length是表格的总行数
+            for(j=0;j<table.rows[0].cells.length;j++){//循环第一行的所有单元格的数据，让其加到最后新加的一行数据中（注意下标是从0开始的）
+                var cell = row.insertCell(j);//给新插入的行中添加单元格
+                cell.height = "20px";//一个单元格的高度，跟css样式中的line-height高度一样
+                    cell.innerHTML = tableDataList[j];//设置新单元格的内容，这个根据需要，自己设置
+            }
+            table.deleteRow(1);//删除table的第一行
+        };
+    initTable1();
+ function initTable1(){
+     $.ajax({
+         type: "get", async: true, //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+         url: "http://127.0.0.1/bigScreen/getTable1",
+         data: {flag:""}, dataType: "json",
+         //返回数据形式为json
+         success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+             var tableDataList=data.result.data;
+             var tbody = document.getElementById('tb1');
+
+             for(var i = 0;i < tableDataList.length; i++){ //遍历一下json数据
+                 var trow = getDataRow1(tableDataList[i]); //定义一个方法,返回tr数据
+                 tbody.appendChild(trow);
+             }
+             //开启定时器
+             setInterval(initTable1ByInterval, 2000);
+         }
+     })
+ }
+    //创建表格数据
+    function getDataRow1(h){
+        var row = document.createElement('tr'); //创建行
+
+        var idCell = document.createElement('td'); //创建第一列id
+        idCell.innerHTML = h.time; //填充数据
+        row.appendChild(idCell); //加入行  ，下面类似
+
+        var nameCell = document.createElement('td');//创建第二列name
+        nameCell.innerHTML = h.src;
+        row.appendChild(nameCell);
+
+        var jobCell = document.createElement('td');//创建第三列job
+        jobCell.innerHTML = h.dest;
+        row.appendChild(jobCell);
+
+        //到这里，json中的数据已经添加到表格中，下面为每行末尾添加删除按钮
+
+        var delCell = document.createElement('td');//创建第四列，操作列
+        delCell.innerHTML = h.type
+        row.appendChild(delCell);
+        return row; //返回tr数据
+    }
+
+    //创建表格数据
+    function getDataRow2(h){
+        var row = document.createElement('tr'); //创建行
+
+        var idCell = document.createElement('td'); //创建第一列id
+        idCell.innerHTML = h.time; //填充数据
+        row.appendChild(idCell); //加入行  ，下面类似
+
+        var nameCell = document.createElement('td');//创建第二列name
+        nameCell.innerHTML = h.src;
+        row.appendChild(nameCell);
+
+        var jobCell = document.createElement('td');//创建第三列job
+        jobCell.innerHTML = h.dest;
+        row.appendChild(jobCell);
+
+        //到这里，json中的数据已经添加到表格中，下面为每行末尾添加删除按钮
+
+        var delCell = document.createElement('td');//创建第四列，操作列
+        delCell.innerHTML = h.type
+        row.appendChild(delCell);
+
+
+        var virCell = document.createElement('td');//创建第四列，操作列
+        virCell.innerHTML = h.vir;
+        row.appendChild(virCell);
+        return row; //返回tr数据
+    }
+    //table1定时器
+    function initTable1ByInterval(){
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "http://127.0.0.1/bigScreen/getTable1",
+            data: {flag:"1"}, //1-定时器请求
+            dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var tableDataList=data.result.data;
+                var table = document.getElementById("table1");//获得表格
+                change(table,tableDataList);//执行表格change函数，删除第一行，最后增加一行，类似行滚动
+            }
+        })
+
+
+
+    }
+
+//初始化表格2===================
+    initTable2();
+    function initTable2(){
+        $.ajax({
+            type: "get", async: true, //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url: "http://127.0.0.1/bigScreen/getTable2",
+            data: {flag:""}, dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var tableDataList=data.result.data;
+                var tbody = document.getElementById('tb2');
+
+                for(var i = 0;i < tableDataList.length; i++){ //遍历一下json数据
+                    var trow = getDataRow2(tableDataList[i]); //定义一个方法,返回tr数据
+                    tbody.appendChild(trow);
+                }
+                //开启定时器
+                setInterval(initTable2ByInterval, 500);
+            }
+        })
+    }
+    //table2定时器
+    function initTable2ByInterval(){
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "http://127.0.0.1/bigScreen/getTable2",
+            data: {flag:"1"}, //1-定时器请求
+            dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var tableDataList=data.result.data;
+                var table = document.getElementById("table2");//获得表格
+                change(table,tableDataList);//执行表格change函数，删除第一行，最后增加一行，类似行滚动
+            }
+        })
+    }
+
+//会话数据=========================
+    var session_bar;
+    function session(sessionX,sessionY){
+        session_bar = echarts.init(document.getElementById('bar2'));
+        var option1 = {
+            title: {
+                text: '会话监控',
+                top: 10,
+                x: 'center',
+                textStyle: {
+                    color: '#FFFFFF',
+                    fontSize: 16
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '3%',
+                bottom: '3%',
+                top: 36,
+                containLabel: true,
+            },
+            xAxis: [{
+                type: 'category',
+                data: sessionX,
+                axisPointer: {
+                    type: 'none'
+                },
+                boundaryGap: true,
+                axisLabel: {
+                    interval: 0,
+                    textStyle: {
+                        color: '#FFFFFF'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#FFFFFF'
+                    }
+                },
+                axisTick: {
+                    show: false,
+                },
+            },
+                {
+                    type: 'category',
+                    show: false,
+                    position: '',
+                    data: sessionX,
+                    axisPointer: {
+                        type: 'none',
+                        label: {
+                            show: false
+                        }
+                    },
+                    boundaryGap: true,
+                }
+            ],
+            yAxis: [{
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#fff',
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        fontSize: 14,
+                        color: '#ffffff'
+                    }
+                },
+                splitLine: {
+                    show: false
+                }
+            },{
+                type: 'value',
+                axisLabel: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+                axisTick: {
+                    show: false,
+                },
+                splitLine: {
+                    show: false,
+                }
+            }],
+            series: [{
+                type: 'bar',
+                data: sessionY,
+                barWidth: 10,
+                itemStyle: {
+                    normal: {
+                        barWidth: 5,
+                        color: '#00ffd2'
+                    },
+                    emphasis: {
+                        barBorderRadius: 7,
+                    },
+                    barWidth: 10
+                },
+                barCategoryGap: 0,
+            },
+
+                {
+                    name: '所占比例',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    xAxisIndex: 1,
+                    symbol: 'false',
+                    data: sessionY,
+                    itemStyle: {
+                        normal: {
+                            color: '#51e5fc',
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0,
+                                    color: 'rgba(82,186,212,1)' // 0% 处的颜色
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(82,186,212,0.2)' // 100% 处的颜色
+                                }],
+                                globalCoord: false // 缺省为 false
+                            }
+                        }
+                    },
+                    smooth: false
+                }
+            ]
+        }
+        session_bar.setOption(option1);
+    }
+    var sessionX,sessionY;
+    getSessionData();
+    function getSessionData() {
+        $.ajax({
+            type: "get", async: true, //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url: "http://127.0.0.1/bigScreen/getSessionNumForBigScreen",
+            data: {flag:""}, dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                sessionX=data.result.xList;
+                sessionY=data.result.yList;
+                session(sessionX,sessionY); //调用
+                //开启定时器
+                setInterval(getSessionDataByInterval, 2000);
+            }
+        })
+    }
+    //session定时器
+    function getSessionDataByInterval(){
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "http://127.0.0.1/bigScreen/getSessionNumForBigScreen",
+            data: {flag:"1"}, //1-定时器请求
+            dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var  x=data.result.xData;
+                var y=data.result.yData;
+                sessionX.shift();
+                sessionX.push(x);
+                sessionY.shift();
+                sessionY.push(y);
+                //更新数据
+                var option = session_bar.getOption();
+                option.series[0].data = sessionY;
+                option.xAxis[0].data = sessionX;
+                session_bar.setOption(option);
+            }
+        })
+    }
+    //会话数据=========================
+//流量监控===============
+    var traffic;
+    function traffic(trafficX,trafficY){
+        traffic = echarts.init(document.getElementById('pie2'));
+        var option2 = {
+            title: {
+                text: '总流量监控',
+                top: 10,
+                x: 'center',
+                textStyle: {
+                    color: '#FFFFFF',
+                    fontSize: 16
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '3%',
+                bottom: '3%',
+                top: 36,
+                containLabel: true,
+            },
+            xAxis: [{
+                type: 'category',
+                data: trafficX,
+                axisPointer: {
+                    type: 'none'
+                },
+                boundaryGap: true,
+                axisLabel: {
+                    interval: 0,
+                    textStyle: {
+                        color: '#FFFFFF'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#FFFFFF'
+                    }
+                },
+                axisTick: {
+                    show: false,
+                },
+            },
+                {
+                    type: 'category',
+                    show: false,
+                    position: '',
+                    data: trafficX,
+                    axisPointer: {
+                        type: 'none',
+                        label: {
+                            show: false
+                        }
+                    },
+                    boundaryGap: true,
+                }
+            ],
+            yAxis: [{
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#fff',
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        fontSize: 14,
+                        color: '#ffffff'
+                    }
+                },
+                splitLine: {
+                    show: false
+                }
+            },{
+                type: 'value',
+                axisLabel: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+                axisTick: {
+                    show: false,
+                },
+                splitLine: {
+                    show: false,
+                }
+            }],
+            series: [{
+                type: 'bar',
+                data: trafficY,
+                barWidth: 10,
+                itemStyle: {
+                    normal: {
+                        barWidth: 5,
+                        color: '#8373ff'
+                    },
+                    emphasis: {
+                        barBorderRadius: 7,
+                    },
+                    barWidth: 10
+                },
+                barCategoryGap: 0,
+            },
+
+                {
+                    name: '所占比例',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    xAxisIndex: 1,
+                    symbol: 'false',
+                    data: trafficY,
+                    itemStyle: {
+                        normal: {
+                            color: '#8373ff',
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: 'rgba(131,155,255,.2)' /*{
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0,
+                                color: 'rgba(82,186,212,1)' // 0% 处的颜色
+                            }, {
+                                offset: 1,
+                                color: 'rgba(82,186,212,0.2)' // 100% 处的颜色
+                            }],
+                            globalCoord: false // 缺省为 false
+                        }*/
+                        }
+                    },
+                    smooth: false
+                }
+            ]
+        }
+        traffic.setOption(option2);
+    }
+
+    var trafficX,trafficY;
+    getTrafficData();
+    function getTrafficData() {
+        $.ajax({
+            type: "get", async: true, //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url: "http://127.0.0.1/bigScreen/getFlowTableNumForBigScreen",
+            data: {flag:""}, dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                trafficX=data.result.xList;
+                trafficY=data.result.yList;
+                traffic(trafficX,trafficY); //调用
+                //开启定时器
+                setInterval(getTrafficDataByInterval, 2000);
+            }
+        })
+    }
+    function getTrafficDataByInterval(){
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "http://127.0.0.1/bigScreen/getFlowTableNumForBigScreen",
+            data: {flag:"1"}, //1-定时器请求
+            dataType: "json",
+            //返回数据形式为json
+            success: function (data) { //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var  x=data.result.xData;
+                var y=data.result.yData;
+                trafficX.shift();
+                trafficX.push(x);
+                trafficY.shift();
+                trafficY.push(y);
+                //更新数据
+                var option = traffic.getOption();
+                option.series[0].data = trafficY;
+                option.xAxis[0].data = trafficX;
+                traffic.setOption(option);
+            }
+        })
+    }
+//流量监控=================
+
+
+    function line1(data,color) {
+        var dataArr = data;
+        var char_line = echarts.init(document.getElementById('line1'));
+        option_line = {
+            grid: {
+                left: '3%',
+                right: '3%',
+                bottom: '3%',
+                containLabel: true,
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: 'false',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#FFFFFF',
+                    }
+                },
+                axisLabel:{
+                    interval: 0,
+                    textStyle: {
+                        fontSize: 12,
+                        color: '#FFFFFF'
+                    }
+                },
+                data: ['10.24', '10.25', '10.26', '10.27', '10.28', '10.29', '10.21']
+            },
+            yAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#fff',
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        fontSize: 14,
+                        color: '#ffffff'
+                    }
+                },
+                splitLine: {
+                    show: false
+                }
+            },
+            color: color,
+            series: [{
+                data: dataArr,
+                type: 'line',
+                smooth: true
+            }]
+        };
+        char_line.setOption(option_line);
+    }
+    line1(data,color); //调用
+
+    //echats世界攻击地图
+    var geoCoordMap = geoCityCountyPos;
+    var BJData = [
+        [{
+            name: '美国',
+            value: 999,
+            size: 16,
+            color: "#ffd735"
+        }, {
+            name: '北京'
+        }],[{
+            name: '加拿大',
+            value: 999,
+            size: 17,
+            color: "#ffa235"
+        }, {
+            name: '北京'
+        }],[{
+            name: '墨西哥',
+            value: 999,
+            size: 18,
+            color: "#ff3535"
+        }, {
+            name: '北京'
+        }],[{
+            name: '澳大利亚',
+            value: 999,
+            size: 19,
+            color: "#ff7335"
+        }, {
+            name: '北京'
+        }]/*,[{
+            name: '西班牙',
+            value: 999,
+            size: 14,
+            color: "#ff4e00"
+        }, {
+            name: '北京'
+        }],[{
+            name: '英国',
+            value: 999,
+            size: 20,
+            color: "#41fd46"
+        }, {
+            name: '北京'
+        }],[{
+            name: '巴西',
+            value: 999,
+            size: 13,
+            color: "#00ff06"
+        }, {
+            name: '北京'
+        }],[{
+            name: '德国',
+            value: 999,
+            size: 20,
+            color: "#ffcc00"
+        }, {
+            name: '北京'
+        }],[{
+            name: '哈沙克斯坦',
+            value: 999,
+            size: 25,
+            color: "#ff8a00"
+        }, {
+            name: '北京'
+        }],[{
+            name: '意大利',
+            value: 999,
+            size: 15,
+            color: "#ff0000"
+        }, {
+            name: '北京'
+        }],*/
+    ];
+    var convertData = function (data) {
+        var res = [];
+        for (var i =0; i < data.length; i++){
+            var dataItem = data[i];
+            var fromCoord = geoCoordMap[dataItem[0].name];
+            var toCoord = geoCoordMap[dataItem[1].name];
+            if (fromCoord && toCoord){
+                res.push([{
+                    coord: fromCoord,
+                    value: dataItem[0].value,
+                    size: dataItem[0].size
+
+                },{
+                    coord: toCoord
+                }])
+            }
+        }
+        return res;
+    };
+    var series = [];
+    [
+        ["北京", BJData]
+    ].forEach(function (item, i) {
+        series.push({
+                type: "lines",
+                zlevel: 1,
+                effect: {
+                    show: true,
+                    period: 4,          //箭头指向速度，数值越小速度越快
+                    trailLength: 0.05,   //特效尾迹长度[0,1]值越大，尾迹越长重
+                    symbol: "arrow",    //箭头图标
+                    symbolSize: 7       //箭头大小
+                },
+                lineStyle: {
+                    normal: {
+                        width: 1,       //尾迹线条宽度
+                        opacity: 0,      //尾迹线条透明度
+                        curveness: 0, //尾迹线条曲直度
+                    }
+                },
+                data: convertData(item[1])
+            },
+            {
+                type: "effectScatter",
+                coordinateSystem: "geo",
+                zlevel: 2,
+                rippleEffect: {
+                    //涟漪特效
+                    period: 4,          //动画时间，值越小速度越快
+                    brushType: "stroke",//波纹绘制方式 stroke,fill
+                    scale: 4            //波纹圆环最大限制，值越大波纹越大
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: "right",  //显示位置
+                        offset: [5, 0],     //偏移设置
+                        formatter: "{b}"    //圆环显示文字
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                symbol: "circle",
+                symbolSize: function (val) {
+                    return val[3];
+                },
+                itemStyle: {
+                    normal: {
+                        color: function (params) {
+                            return params.data.value[4];
+                        }
+                    }
+                },
+                data: item[1].map(function (dataItem) {
+                    var a = [geoCoordMap[dataItem[0].name][0], geoCoordMap[dataItem[0].name][1], dataItem[0].value, dataItem[0].size, dataItem[0].color];
+                    return {
+                        name: dataItem[0].name,
+                        value: a
+                    };
+                })
+            },
+            //被攻击点
+            {
+                type: "scatter",
+                coordinateSystem: "geo",
+                zlevel: 2,
+                rippleEffect: {
+                    period: 4,
+                    brushType: "stroke",
+                    scale: 4
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: "right",
+                        color: "#FFFFFF",
+                        formatter: "{b}",
+                        textStyle: {
+                            color: "#00ff06"
+                        }
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                symbol: "pin",
+                symbolSize: 30,
+                itemStyle: {
+                    normal: {
+                        show: true,
+                        color: "#00ff06"
+                    }
+                },
+                data: [{
+                    name: item[0],
+                    value: [geoCoordMap[item[0]][0], geoCoordMap[item[0]][1], 100]
+                }]
+            })
+    });
+    var myChart = echarts.init(document.getElementById('world-map'));
+    var option = {
+        geo: {
+            map: "world",
+            label: {
+                emphasis: {
+                    show: false
+                }
+            },
+            roam: true,  //是否允许缩放
+            layoutCenter: ["50%", "55%"],  //地图位置
+            layoutSize: "170%",
+                itemStyle: {
+                normal: {
+                    color: "#006dd2",   //地图背景色
+                    borderColor: "#003987",  //边界线颜色
+                    borderWidth: 1
+                },
+            }
+        },
+        series: series
+    }
+    myChart.setOption(option);
+//  会话监控
+//     var myChart1 = echarts.init(document.getElementById('bar2'));
+//     var option1 = {
+//         title: {
+//             text: '会话监控',
+//             top: 10,
+//             x: 'center',
+//             textStyle: {
+//                 color: '#FFFFFF',
+//                 fontSize: 16
+//             }
+//         },
+//         grid: {
+//             left: '3%',
+//             right: '3%',
+//             bottom: '3%',
+//             top: 36,
+//             containLabel: true,
+//         },
+//         xAxis: [{
+//             type: 'category',
+//             data: ['10.24', '10.25', '10.26', '10.27', '10.28', '10.29', '10.21'],
+//             axisPointer: {
+//                 type: 'none'
+//             },
+//             boundaryGap: true,
+//             axisLabel: {
+//                 interval: 0,
+//                 textStyle: {
+//                     color: '#FFFFFF'
+//                 }
+//             },
+//             axisLine: {
+//                 lineStyle: {
+//                     color: '#FFFFFF'
+//                 }
+//             },
+//             axisTick: {
+//                 show: false,
+//             },
+//         },
+//             {
+//                 type: 'category',
+//                 show: false,
+//                 position: '',
+//                 data: ['10.24', '10.25', '10.26', '10.27', '10.28', '10.29', '10.21'],
+//                 axisPointer: {
+//                     type: 'none',
+//                     label: {
+//                         show: false
+//                     }
+//                 },
+//                 boundaryGap: true,
+//             }
+//         ],
+//         yAxis: [{
+//             type: 'value',
+//             axisTick: {
+//                 show: false
+//             },
+//             axisLine: {
+//                 lineStyle: {
+//                     color: '#fff',
+//                 }
+//             },
+//             axisLabel: {
+//                 textStyle: {
+//                     fontSize: 14,
+//                     color: '#ffffff'
+//                 }
+//             },
+//             splitLine: {
+//                 show: false
+//             }
+//         },{
+//             type: 'value',
+//             axisLabel: {
+//                 show: false
+//             },
+//             axisLine: {
+//                 show: false,
+//             },
+//             axisTick: {
+//                 show: false,
+//             },
+//             splitLine: {
+//                 show: false,
+//             }
+//         }],
+//         series: [{
+//             type: 'bar',
+//             data: data,
+//             barWidth: 10,
+//             itemStyle: {
+//                 normal: {
+//                     barWidth: 5,
+//                     color: '#00ffd2'
+//                 },
+//                 emphasis: {
+//                     barBorderRadius: 7,
+//                 },
+//                 barWidth: 10
+//             },
+//             barCategoryGap: 0,
+//         },
+//
+//             {
+//                 name: '所占比例',
+//                 type: 'line',
+//                 yAxisIndex: 1,
+//                 xAxisIndex: 1,
+//                 symbol: 'false',
+//                 data: data,
+//                 itemStyle: {
+//                     normal: {
+//                         color: '#51e5fc',
+//                     }
+//                 },
+//                 areaStyle: {
+//                     normal: {
+//                         color: {
+//                             type: 'linear',
+//                             x: 0,
+//                             y: 0,
+//                             x2: 0,
+//                             y2: 1,
+//                             colorStops: [{
+//                                 offset: 0,
+//                                 color: 'rgba(82,186,212,1)' // 0% 处的颜色
+//                             }, {
+//                                 offset: 1,
+//                                 color: 'rgba(82,186,212,0.2)' // 100% 处的颜色
+//                             }],
+//                             globalCoord: false // 缺省为 false
+//                         }
+//                     }
+//                 },
+//                 smooth: false
+//             }
+//         ]
+//     }
+//     myChart1.setOption(option1);
+//  总流量监控
+//     var myChart2 = echarts.init(document.getElementById('pie2'));
+//     var option2 = {
+//         title: {
+//             text: '总流量监控',
+//             top: 10,
+//             x: 'center',
+//             textStyle: {
+//                 color: '#FFFFFF',
+//                 fontSize: 16
+//             }
+//         },
+//         grid: {
+//             left: '3%',
+//             right: '3%',
+//             bottom: '3%',
+//             top: 36,
+//             containLabel: true,
+//         },
+//         xAxis: [{
+//             type: 'category',
+//             data: ['10.24', '10.25', '10.26', '10.27', '10.28', '10.29', '10.21'],
+//             axisPointer: {
+//                 type: 'none'
+//             },
+//             boundaryGap: true,
+//             axisLabel: {
+//                 interval: 0,
+//                 textStyle: {
+//                     color: '#FFFFFF'
+//                 }
+//             },
+//             axisLine: {
+//                 lineStyle: {
+//                     color: '#FFFFFF'
+//                 }
+//             },
+//             axisTick: {
+//                 show: false,
+//             },
+//         },
+//             {
+//                 type: 'category',
+//                 show: false,
+//                 position: '',
+//                 data: ['10.24', '10.25', '10.26', '10.27', '10.28', '10.29', '10.21'],
+//                 axisPointer: {
+//                     type: 'none',
+//                     label: {
+//                         show: false
+//                     }
+//                 },
+//                 boundaryGap: true,
+//             }
+//         ],
+//         yAxis: [{
+//             type: 'value',
+//             axisTick: {
+//                 show: false
+//             },
+//             axisLine: {
+//                 lineStyle: {
+//                     color: '#fff',
+//                 }
+//             },
+//             axisLabel: {
+//                 textStyle: {
+//                     fontSize: 14,
+//                     color: '#ffffff'
+//                 }
+//             },
+//             splitLine: {
+//                 show: false
+//             }
+//         },{
+//             type: 'value',
+//             axisLabel: {
+//                 show: false
+//             },
+//             axisLine: {
+//                 show: false,
+//             },
+//             axisTick: {
+//                 show: false,
+//             },
+//             splitLine: {
+//                 show: false,
+//             }
+//         }],
+//         series: [{
+//             type: 'bar',
+//             data: data,
+//             barWidth: 10,
+//             itemStyle: {
+//                 normal: {
+//                     barWidth: 5,
+//                     color: '#8373ff'
+//                 },
+//                 emphasis: {
+//                     barBorderRadius: 7,
+//                 },
+//                 barWidth: 10
+//             },
+//             barCategoryGap: 0,
+//         },
+//
+//             {
+//                 name: '所占比例',
+//                 type: 'line',
+//                 yAxisIndex: 1,
+//                 xAxisIndex: 1,
+//                 symbol: 'false',
+//                 data: data,
+//                 itemStyle: {
+//                     normal: {
+//                         color: '#8373ff',
+//                     }
+//                 },
+//                 areaStyle: {
+//                     normal: {
+//                         color: 'rgba(131,155,255,.2)' /*{
+//                             type: 'linear',
+//                             x: 0,
+//                             y: 0,
+//                             x2: 0,
+//                             y2: 1,
+//                             colorStops: [{
+//                                 offset: 0,
+//                                 color: 'rgba(82,186,212,1)' // 0% 处的颜色
+//                             }, {
+//                                 offset: 1,
+//                                 color: 'rgba(82,186,212,0.2)' // 100% 处的颜色
+//                             }],
+//                             globalCoord: false // 缺省为 false
+//                         }*/
+//                     }
+//                 },
+//                 smooth: false
+//             }
+//         ]
+//     }
+//     myChart2.setOption(option2);
+
+</script>
+</html>

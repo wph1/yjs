@@ -1,0 +1,341 @@
+@font-face {
+    font-family:"DS-Digital";
+    src: url('../bootstrap/fonts/DS-DIGIT.TTF');
+    src: url('../bootstrap/fonts/DS-DIGIB.TTF');
+    src: url('../bootstrap/fonts/DS-DIGII.TTF');
+    src: url('../bootstrap/fonts/DS-DIGI.TTF');
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "Microsoft YaHei Light","Microsoft YaHei",SimSun,Verdana,sans-serif;
+    background-color: #eaeaea;
+    position: relative;
+    font-size:14px;
+    overflow-x: hidden;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover, a:active, a:focus {
+    color: #FFFFFF;
+    outline: none;
+    text-decoration: none;
+}
+input , button{
+    outline: none;
+}
+ul, li, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+label{
+    font-weight: normal;
+}
+.h1, .h2, .h3, h1, h2, h3{
+    margin: 0;
+}
+/************************ICON **************************/
+/*b{
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 20px 5px 0 20px;
+}*/
+b img{
+    width: 100%;
+}
+b.blocking{
+    background-position: 0 0;
+}
+b.manage{
+    background-position: 0 -24px;
+}
+b.plot{
+    background-position: 0 -48px;
+}
+b.holdup{
+    background-position: 0 -72px;
+}
+b.auth{
+    background-position: 0 -96px;
+}
+b.log{
+    background-position: 0 -120px;
+}
+b.report{
+    background-position: 0 -144px;
+}
+
+/**********************Button **************************/
+.btn{
+    border: none;
+    color: #fff;
+    width: 80px;
+    height: 30px;
+    line-height: 18px;
+}
+.btn:focus, .btn:hover, .btn:visited{
+    color: #fff;
+    border: 0;
+}
+.btn-blue{
+    background-color: #00baff;
+}
+.btn-demand{
+    background-color: #00dac7;
+}
+.btn-add{                       /*鏂板鎸夐挳鏍峰紡*/
+    background-color: #53ec00;
+}
+.btn-origin{                    /*瀵煎嚭鎸夐挳鏍峰紡*/
+    background-color: #ff743d;
+}
+.btn-dr{                        /*瀵煎叆鎸夐挳鏍峰紡*/
+    background-color: #ffca4b;
+}
+.btn-xz{                        /*涓嬭浇鎸夐挳鏍峰紡*/
+    background-color: #4bd7ff;
+}
+.btn-grey{                      /*绂佺敤鎸夐挳鏍峰紡*/
+    background-color: #858585;
+}
+.btn-bapro{
+    background-color: #00baff;
+}
+.btn-blue:hover{   
+    background-color: #2f91ff;
+}
+
+/**********************Table ***************************/
+.table{
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    border-style: hidden;
+}
+.table tr, .table td{
+    border: 2px solid #0078ff;
+}
+.table>thead>tr{
+    font-size: 16px;
+    /*background-color: rgba(0, 29, 68, .5);*/
+}
+.table>thead>tr>th{
+    border: 2px solid #0078ff;
+    text-align: center;
+}
+.table>thead>tr:nth-child(2)>th{
+    font-weight: normal;
+}
+.table>tbody>tr>td{
+    border: 2px solid #0078ff;
+}
+.table tbody>tr>td a + a{
+    margin-left: 20px;
+}
+.table-striped>tbody>tr:nth-of-type(even){
+    /*background-color: rgba(0, 29, 68, .5);*/
+}
+.table-striped>tbody>tr:nth-of-type(odd){
+    /*background-color: rgba(0, 29, 68, .5);*/
+}
+
+/******************寮瑰嚭灞�(730px) ************************/
+.tips .modal-dialog{
+    width: 100%;
+}
+.tips .modal-content{
+    width: 730px;
+    margin: 0 auto;
+}
+.tips .modal-header{
+    width: 100%;
+    height: 50px;
+    padding: 0;
+}
+.tips .modal-header h3{
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: bold;
+    float: left;
+    border-left: 10px solid #00baff;
+    padding-left: 10px;
+}
+.tips .modal-header .close{
+    margin-top: 15px;
+    opacity: .6;
+}
+.tips .modal .form-group{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+}
+.tips .modal .form-group input{
+    width: 500px;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+    padding: 0;
+    margin-right: 45px;
+}
+.tips .modal-footer{
+    width: 100%;
+    padding: 0;
+    line-height: 50px;
+}
+
+/******************寮瑰嚭灞�(100%) ************************/
+.tip .modal-dialog{
+    width: 100%;
+}
+.tip .modal-content{
+    width: 100%;
+    margin: 0 auto;
+}
+.tip .modal-header{
+    width: 100%;
+    height: 80px;
+    padding: 0;
+}
+.tip .modal-header h3{
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: bold;
+    float: left;
+    margin-top: 25px;
+    border-left: 10px solid #00baff;
+    padding-left: 10px;
+}
+.tip .modal-header .close{
+    margin-top: 20px;
+    margin-right: 20px;
+    opacity: .6;
+}
+.tip .modal .form-group{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+}
+.tip .modal .form-group input{
+    width: 500px;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+    padding: 0;
+    margin-right: 45px;
+}
+.tip .modal-footer{
+    width: 100%;
+    height: 100px;
+    padding: 0;
+    line-height: 100px;
+}
+.tip .modal-footer .btn{
+    width: 130px;
+    height: 50px;
+    padding: 0;
+    line-height: 50px;
+    font-size: 18px;
+    margin-top: 25px;
+}
+
+/************************鎻愮ず***************************/
+/*.tip{
+    position: fixed;
+    left: 48%;
+    top: 48%;
+    display: inline-block;
+    background-color: rgba(0,0,0,.9);
+    color: #fff;
+    font-size: 18px;
+    padding: 8px 16px;
+    display: none;
+    z-index: 9999;
+}*/
+
+/******************Margin/Padding **********************/
+.m{
+    margin: 0 auto;
+}
+.m15{
+    margin: 15px;
+}
+.ml5{
+    margin-left: 5px;
+}
+.ml10{
+    margin-left: 10px;
+}
+.ml15{
+    margin-left: 15px;
+}
+.ml20{
+    margin-left: 15px;
+}
+.mr5{
+    margin-right: 5px;
+}
+.mr10{
+    margin-right: 10px;
+}
+.mr15{
+    margin-right: 15px;
+}
+.mr20{
+    margin-right: 20px;
+}
+.mt10{
+    margin-top: 10px;
+}
+.mt15{
+    margin-top: 15px;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mt10{
+    margin-bottom: 10px;
+}
+.mt20{
+    margin-bottom: 20px;
+}
+
+/********************Circle ****************************/
+.bgc-blu{
+    background-color: #00baff  !important;
+    color: #FFF;
+}
+.bgc-origin{
+    background-color: #ffd524;
+}
+.bgc-blue{
+    background-color: #3b4eff;
+}
+.bgc-azure{
+    background-color: #31faff;
+}
+.bgc-green{
+    background-color: #6cff6c;
+}
+.bgc-all{
+    background-color: #5ad8ff;
+}
+.bgc-origin, .bgc-blue, .bgc-azure, .bgc-green, .bgc-all{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 5px;
+    margin-top: 19px;
+}
+
+
+
+
+

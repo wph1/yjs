@@ -1,0 +1,119 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+/*谷歌浏览器input框自动填充，背景色为黄色修改*/
+input:-webkit-autofill{
+    box-shadow: 0 0 0 1000px white inset;
+}
+input{
+    width: 255px;
+    padding: 5px 0px 5px 55px;
+    border: 0;
+    color: #333;
+}
+input:focus, input:visited{
+    outline: 0;
+}
+label{
+    font-weight: normal;
+    margin-right: 0;
+}
+.warmper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #00baff;
+    font-size: 14px;
+}
+
+.login-bg{
+    background-image: url("../img/login.jpg");
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    min-width: 1000px;
+    z-index: -10;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    zoom: 1;
+}
+.warmp_login{
+    width: 400px;
+    height: 400px;
+    background: #FFF;
+    box-shadow: 0px 2px 3px #ccc;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-top: -200px;
+    margin-left: -200px;
+}
+.login_title img{
+    width: 100px;
+    margin-left: 150px;
+    margin-top: -50px;
+}
+.login_title h2{
+    font-size: 20px;
+    text-align: center;
+    line-height: 90px;
+}
+.login{
+    margin-top: 10px;
+}
+.login_name{
+    margin-bottom: 30px;
+}
+.login_name, .login_pwd{
+    width: 300px;
+    border-bottom: 1px solid #00baff;
+    margin-left: 50px;
+}
+.login_pwd{
+    margin-top: 40px;
+}
+.login-lable{
+    height: 24px;
+    line-height: 24px;
+    padding-left: 20px;
+    position: absolute;
+}
+.lable-name{
+    background: url("../img/login-name.png") 0 center no-repeat;
+}
+.lable-psw{
+    background: url("../img/login-pwd.png") 0 center no-repeat;
+}
+.prompt{
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 10px;
+    color: #f00;
+}
+.register{
+    width: 300px;
+    height: 30px;
+    margin-left: 50px;
+}
+.register button{
+    width: 300px;
+    padding: 0;
+    height: 38px;
+    line-height: 38px;
+    margin-top: 10px;
+    background-color: #00baff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 10px;
+}
+.register button:hover{
+    color:#fff;
+}
